@@ -1,7 +1,7 @@
 export class ProductModel {
-  productId : number;
-  productName: string;
-  categoryId : number;
-  quantityPerUnit : string;
-  unitPrice : number;
+  ProductId : number;
+  ProductName: string;
+  CategoryId : number;
+  QuantityPerUnit : string;
+  UnitPrice : number;
 }

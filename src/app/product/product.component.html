@@ -1,5 +1,20 @@
-<ng-container *ngFor="let item of products" >
-  <span>
-    {{ item.productName }}
-  </span>
-</ng-container>
+
+<div class="row mt-2">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Arama yapın..." [(ngModel)]="filteredText">
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+<ul class="list-group" >
+    <li class="list-group-item" *ngFor="let product of products | filter: 'productName' : filteredText">
+      <h5><b>{{ product.ProductName | uppercase }}</b></h5>
+      <p>{{ product.QuantityPerUnit }}</p>
+      <h6>{{ product.UnitPrice | currency : '₺'}}</h6>
+      <h6>KDV'li Tutar: {{ product.UnitPrice | kdv | currency: '₺'}}</h6>
+    </li>
+</ul>
+</div>
+</div>
+

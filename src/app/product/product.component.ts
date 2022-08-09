@@ -5,11 +5,12 @@ import { ProductService } from './services/product.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
   products: ProductModel[] = [];
-  constructor(private productService: ProductService) { }
+  filteredText: string;
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.getProduct();
@@ -19,9 +20,9 @@ export class ProductComponent implements OnInit {
 
 getProduct(){
   this.productService.getProducts().subscribe(response => {
-    this.products = response;
 
-
+    this.products = response["value"];
+    console.log("Console: ", this.products);
   });
 }
 
