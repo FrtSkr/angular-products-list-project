@@ -10,8 +10,11 @@ export class FilterPipe implements PipeTransform {
     if(!filterText){
       return list;
     }
-    filterText = filterText.toLocaleLowerCase();
-    return list.filter(x => x[prop]?.toLocaleLowerCase().indexOf(filterText) !== -1);
+    else {
+      filterText = filterText.toLocaleLowerCase();
+      return list.filter(x => x[prop]?.toLocaleLowerCase().indexOf(filterText) !== -1);
+    }
+
 
   }
 }

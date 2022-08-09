@@ -9,6 +9,8 @@ import { PipeModule } from './shared/pip/pipe.module';
 import { KdvPipe } from './shared/pip/kdv.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './shared/pip/filter.pipe';
+import { CategoryComponent } from './category/category.component';
+import { ProductService } from './product/services/product.service';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { FilterPipe } from './shared/pip/filter.pipe';
     AppComponent,
     ProductComponent,
     KdvPipe,
-    FilterPipe
+    FilterPipe,
+    CategoryComponent
    ],
   imports: [
     BrowserModule,
@@ -25,7 +28,9 @@ import { FilterPipe } from './shared/pip/filter.pipe';
     PipeModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

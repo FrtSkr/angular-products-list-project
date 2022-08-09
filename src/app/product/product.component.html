@@ -1,3 +1,8 @@
+<div class="row mt-3">
+  <div class="col-3">
+    <h4 class="page-header">Ürünler</h4>
+  </div>
+</div>
 
 <div class="row mt-2">
   <div class="col">
@@ -5,10 +10,19 @@
   </div>
 </div>
 
+<div class="row mt-2" *ngIf="filteredText">
+  <div class="col">
+      <div class="alert alert-primary" role="alert">
+        {{ filteredText }} için arama yaptınız...
+      </div>
+  </div>
+</div>
+
+
 <div class="row mt-2">
   <div class="col">
 <ul class="list-group" >
-    <li class="list-group-item" *ngFor="let product of products | filter: 'productName' : filteredText">
+    <li class="list-group-item" *ngFor="let product of products | filter: 'ProductName' : filteredText">
       <h5><b>{{ product.ProductName | uppercase }}</b></h5>
       <p>{{ product.QuantityPerUnit }}</p>
       <h6>{{ product.UnitPrice | currency : '₺'}}</h6>
