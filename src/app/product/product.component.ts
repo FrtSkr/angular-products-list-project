@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from './models/product.model';
 import { ProductService } from './services/product.service';
 
@@ -10,27 +11,33 @@ import { ProductService } from './services/product.service';
 export class ProductComponent implements OnInit {
   products: ProductModel[] = [];
   filteredText: string;
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.getProduct();
-   // this.getProduct2();
+   this.getRouteControl();
 
   }
 
-getProduct(){
-  this.productService.getProducts().subscribe(response => {
+    getRouteControl(){
+    this.activatedRoute.params.subscribe(param => {
+      const id = param['CategoryId'];
+      this.getProduct(isNaN(Number(id)) ? 0 : Number(id));
+    })
+  }
 
-    this.products = response["value"];
-    console.log("Console: ", this.products);
-  });
+getProduct(categoryId: number){
+  if(categoryId > 0){
+    debugger;
+    this.productService.getProductByCategoryId(categoryId).subscribe(response => {
+      this.products = response["value"];
+    })
+  }
+  else{
+
+    this.productService.getProducts().subscribe(response => {
+      this.products = response["value"];
+    });
+  }
 }
-
-// async getProduct2(){
-//   await this.productService.getProducts2.then(response =>{
-//     debugger;
-//   });
-
-// }
 
 }

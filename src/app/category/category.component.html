@@ -1,16 +1,18 @@
 <div class="row mt-3">
   <div class="col-3">
-    <h4 class="page-header">Kategoriler</h4>
+    <h4 class="page-header">Categories</h4>
   </div>
 </div>
 
 <div class="row mt-2">
   <div class="col">
-
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let category of categories$ | async">
-          {{category.CategoryName}}
-        </li>
+            <li  class="list-group-item" routerLinkActive="active" routerLink="product" style="cursor: pointer;">
+              > All Products
+          </li>
+          <li  *ngFor="let category of categories$ | async" class="list-group-item" routerLinkActive="active" routerLink="product/{{category.CategoryId}}" style="cursor: pointer;">
+            > {{category.CategoryName}}
+          </li>
       </ul>
 
   </div>

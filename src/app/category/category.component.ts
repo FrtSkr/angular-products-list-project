@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from './models/category.model';
 import { CategoryService } from './services/category.service';
 
 @Component({
@@ -15,6 +14,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.getCategories();
+    console.log(this.categories$);
   }
 
   getCategories(){

@@ -10,12 +10,12 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-    getProducts(): Observable<any>{
+  getProducts(): Observable<any>{
     return this.http.get(`${this.apiUrl}Products`).pipe(map(response => response));
   }
-
-  async getProducts2(): Promise<any>{
-    return await lastValueFrom(this.http.get(`${this.apiUrl}Products`).pipe(map(response => response)));
+  getProductByCategoryId(categoryId: number): Observable<any>{
+    return this.http.get(`${this.apiUrl}Categories(${categoryId})/Products`).pipe(map(response => response));
   }
+
 
 }
